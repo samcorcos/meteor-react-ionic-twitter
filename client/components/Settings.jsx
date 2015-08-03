@@ -24,13 +24,14 @@ Profile = React.createClass({
   },
   render() {
     let loginStatus = this.getLoginStatus();
+    console.log(loginStatus);
     if (this.data.userLoading) {
       return <AppLoading />
     };
     return (
       <div className="profile-wrapper">
         <div className="image-wrapper">
-          {loginStatus ? <img src={this.data.user.profile.image} /> : <div></div>}
+          {loginStatus ? <img src={this.data.user.services.twitter.profile_image_url.replace("_normal", "")} /> : <div></div>}
         </div>
         <div className="login-wrapper">
           {loginStatus ? <LoggedIn ionModal={this.props.ionModal} /> : <NotLoggedIn setModalState={this.props.setModalState} ionModal={this.props.ionModal} />}
@@ -54,11 +55,11 @@ LoggedIn = React.createClass({
 })
 
 NotLoggedIn = React.createClass({
-  login(user, pass) {
-    Meteor.loginWithPassword(user, pass);
+  login() {
+    Meteor.loginWithTwitter()
   },
   render() {
-    return <a>Login</a>
+    return <a onClick={this.login}>Login</a>
   }
 })
 
