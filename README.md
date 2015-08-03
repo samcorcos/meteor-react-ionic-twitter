@@ -1,3 +1,3 @@
-# Meteor-React-Ionic Users and Settings-2
+# Meteor-React-Ionic Twitter
 
-This is the second part of users and settings.
+Twitter login 
